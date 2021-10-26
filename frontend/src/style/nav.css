@@ -1,0 +1,23 @@
+@import "pallet.css";
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+.nav-link,
+.navbar-brand {
+  color: white;
+}
+.active {
+  color: red;
+}
+.nav-link:hover,
+.navbar-brand:hover {
+  color: var(--creame);
+}
+@media only screen and (max-width: 400px) {
+  .navbar {
+    background-color: var(--green);
+  }
+}

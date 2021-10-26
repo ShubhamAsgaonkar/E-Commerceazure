@@ -1,0 +1,44 @@
+@import "pallet.css";
+.main {
+  width: 100vw;
+  height: 90vh;
+  display: grid;
+  place-items: center;
+}
+.container {
+  width: 300px;
+  border-radius: 10px;
+}
+.form-group {
+  position: relative;
+  margin-bottom: 40px;
+}
+.form-group label {
+  position: absolute;
+  user-select: none;
+  top: 10px;
+  color: grey;
+  pointer-events: none;
+  transition: 0.5s;
+}
+.form-control:focus ~ label,
+.form-control:valid ~ label {
+  position: absolute;
+  top: -14px;
+  color: var(--green);
+}
+
+.form-control {
+  border: none;
+  border-bottom: 1px solid black;
+  border-radius: 0px;
+  color: var(--green);
+}
+.form-control:focus {
+  outline: none;
+  box-shadow: none;
+  border-bottom: 3px solid var(--green);
+}
+.p {
+  margin: 5px;
+}

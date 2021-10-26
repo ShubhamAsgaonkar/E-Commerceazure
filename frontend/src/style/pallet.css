@@ -1,0 +1,41 @@
+:root {
+  --creame: #fffd95;
+  --green: dodgerblue;
+  --white: #fff;
+}
+.bg-creame {
+  background-color: var(--creame);
+}
+.bg-red {
+  background-color: var(--red);
+}
+.bg-blue {
+  background-color: var(--blue);
+}
+.bg-green {
+  background-color: var(--green);
+}
+.creame {
+  color: var(--creame);
+}
+.red {
+  color: var(--red);
+}
+.blue {
+  color: var(--blue);
+}
+.green {
+  color: var(--green);
+}
+.white {
+  color: var(--white);
+}
+.ui-btn {
+  background-color: var(--green);
+  color: white;
+}
+.ui-btn:hover {
+  box-shadow: inset 0px 0px 5px var(--white);
+  color: var(--white);
+}
+/*customized*/

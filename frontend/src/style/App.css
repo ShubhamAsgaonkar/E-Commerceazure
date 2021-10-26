@@ -1,0 +1,26 @@
+@import "pallet.css";
+
+#top {
+  height: 100vh;
+  width: 100%;
+  padding: 0;
+  background-image: url("../assets/banner_3.jpg");
+  background-size: cover;
+  display: grid;
+  place-items: center right;
+}
+.detail {
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  overflow: hidden;
+}
+@media only screen and (max-width: 400px) {
+  #top {
+    position: relative;
+    top: 0;
+  }
+  .display-4 {
+    font-size: 2rem !important;
+  }
+}
