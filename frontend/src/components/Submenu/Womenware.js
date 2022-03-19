@@ -1,6 +1,6 @@
 const WomenMenu = () => {
     return (
-        <h1>OPtion 2</h1>
+        <h1>Womenware</h1>
     );
 }
 

@@ -9,6 +9,11 @@
   display: grid;
   place-items: center right;
 }
+#wave{
+  position: absolute;
+  bottom: calc(0px - 10vh);
+  width: 100%;  
+}
 .detail {
   display: grid;
   place-items: center;

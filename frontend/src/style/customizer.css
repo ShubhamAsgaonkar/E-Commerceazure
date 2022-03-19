@@ -1,0 +1,45 @@
+@import "pallet.css";
+.img-container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:300px;
+}
+.customFile{
+    display:none;
+}
+.custLabel{
+    color:aqua;
+    cursor:pointer;
+}
+.alert{
+    padding:10px;
+    height:50px;
+}
+.cus-group{
+    position: relative;
+}
+.cus-group label{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    opacity:.6;
+    transition: .5s ease-in-out;
+}
+.cus-group .cus-form{
+    padding:10px;
+    width:80%;
+    border-radius:5px;
+    outline:none;
+    border:none;
+    border:2px solid var(--a_primary);
+}
+.cus-form:focus ~ label,
+.cus-form:valid ~ label{
+    top: -12px;
+    left: 10px;
+    background-color: #fff;
+    padding: 0 5px;
+    color: var(--a_primary);
+    opacity:1;   
+}

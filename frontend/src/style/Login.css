@@ -9,6 +9,7 @@
   width: 300px;
   border-radius: 10px;
 }
+
 .form-group {
   position: relative;
   margin-bottom: 40px;
@@ -17,6 +18,7 @@
   position: absolute;
   user-select: none;
   top: 10px;
+  left:10px;
   color: grey;
   pointer-events: none;
   transition: 0.5s;
@@ -25,19 +27,36 @@
 .form-control:valid ~ label {
   position: absolute;
   top: -14px;
-  color: var(--green);
+  left:10px;
+  background-color: #fff;
+  padding: 0 5px;
+  color: var(--a_primary);
 }
-
+.form-control:disabled  {
+  color:grey;
+  border:2px solid var(--a_primary) !important;
+  text-transform: capitalize;
+  background-color: #eee !important;
+  overflow-x: scroll;
+}
+.form-control:disabled ~ label {
+  position: absolute;
+  top: -12px;
+  left: 10px;
+  color: var(--a_primary);
+  padding: 0px 5px;
+  background: repeating-linear-gradient(#fff, #fff 50%, #eee 50%, #eee 100%);
+}
 .form-control {
   border: none;
   border-bottom: 1px solid black;
   border-radius: 0px;
-  color: var(--green);
+  color: var(--a_primary);
 }
 .form-control:focus {
   outline: none;
   box-shadow: none;
-  border-bottom: 3px solid var(--green);
+  border-bottom: 3px solid var(--a_primary);
 }
 .p {
   margin: 5px;

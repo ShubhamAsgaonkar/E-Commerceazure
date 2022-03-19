@@ -1,32 +1,103 @@
-import { useEffect, useState } from "react";
-import Axios from 'axios';
+import { useEffect, useState, useContext } from "react";
+import "../../style/menware.css";
+import Axios from "axios";
+import { UserContext } from "../Context";
+import AddProduct from "./Addproduct";
+import { useHistory } from "react-router-dom";
+import DeleteIcon from "@material-ui/icons/Delete";
+
 const MenMenu = () => {
-    const [product, setProduct] = useState([]);
-    useEffect(() => {
-        Axios.get('http://localhost:3001/menware').then(res => {
-            setProduct(res.data);
-        })
-    }, []);
-    return (
-        <div className="d-flex">
-            {console.log(product)}
-            {product.map((element, index) => {
-                console.log(new Buffer.from(element.p_img).toString("base64"))
-                return (
-                    <div className="card m-3 " style={{ width: '18rem', boxShadow: '2px 2px 5px' }}>
-                        <img src={"data:image/png;base64," + new Buffer.from(element.p_img).toString("base64")} alt={element.p_name} className="img-fluid" />
-                        <div className="card-body">
-                            <h5 className="card-title">{element.p_name}</h5>
-                            <h6 className="card-subtitle mb-2 ">Rs. {element.p_price} </h6>
-                            <p className="card-text">{element.p_desc}
-                                {element.p_star}
-                            </p>
-                        </div>
-                    </div>
-                )
-            })}
-        </div>
-    );
-}
+  const history = useHistory();
+  const { user, serUser } = useContext(UserContext);
+  const [product, setProduct] = useState([]);
+
+
+  const addProduct = () => {
+    Axios.get("http://localhost:3002/menware").then((res) => {
+      setProduct(res.data);
+    });
+  };
+
+  const addToCart = (id) => {
+
+    Axios.post(`http://localhost:3002/cart`, {
+      userId: user.Id,
+      productId: id.id,
+      pname: id.p_name,
+      pprice: id.p_price,
+      psize: id.p_size[0],
+      pimg: new Buffer.from(id.p_img).toString("ascii"),
+    })
+      .then((res) => {
+        history.push(`/order/${user.Id}`);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    addProduct();
+  }, []);
+
+  return (
+    <>
+      {/* displaying Add Button when Admin in logged in  */}
+      {user.role === "admin" && <AddProduct />}
+
+      {/* rendering porducts */}
+      <div className="grid-container">
+        {product.map((e, i, arr) => {
+          return (
+            <div className="card-d bg-a_primary rounded white" key={i}>
+              {user.role === "admin" && (
+                //button to delete product fro Admin only
+                <div>
+                  <div className="delete-icon">
+                    <DeleteIcon
+                      onClick={() => {
+                        Axios.delete(
+                          `http://localhost:3002/menware/delete/${e.id}`
+                        );
+                        addProduct();
+                      }}
+                    />
+                  </div>
+                </div>
+              )}
+
+              {/* converting the image to base64 */}
+              <img
+                src={new Buffer.from(e.p_img).toString("ascii")}
+                className="img-fluid crd-img"
+                alt="Denim Jeans"
+                style={{ width: "100%" }}
+                onClick={() => history.push(`/descProduct/${e.id}`)}
+              />
+
+              {/* displaying the product details     */}
+              <div className="details text-dark">
+                <h5 className="text-capitalize ">{e.b_name}</h5>
+                <p>{e.p_name}</p>
+                <p>&#8377;{e.p_price}</p>
+              </div>
+              <button
+                className="btn btn-primary btn-block buy"
+                onClick={() => {
+                  user.role === undefined
+                    ? history.push("/login")
+                    :addToCart(e);
+                }}
+              >
+                {" "}
+                Buy Now
+              </button>
+            </div>
+          );
+        })}
+      </div>
+    </>
+  );
+};
 
 export default MenMenu;

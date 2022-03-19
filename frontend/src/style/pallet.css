@@ -1,10 +1,10 @@
 :root {
-  --creame: #fffd95;
-  --green: dodgerblue;
+  --a_secondary: #05386b;
+  --a_primary: #5cdb95;
   --white: #fff;
 }
-.bg-creame {
-  background-color: var(--creame);
+.bg-a_secondary {
+  background-color: var(--a_secondary);
 }
 .bg-red {
   background-color: var(--red);
@@ -12,11 +12,11 @@
 .bg-blue {
   background-color: var(--blue);
 }
-.bg-green {
-  background-color: var(--green);
+.bg-a_primary {
+  background-color: var(--a_primary);
 }
-.creame {
-  color: var(--creame);
+.a_secondary {
+  color: var(--a_secondary);
 }
 .red {
   color: var(--red);
@@ -24,18 +24,22 @@
 .blue {
   color: var(--blue);
 }
-.green {
-  color: var(--green);
+.a_primary {
+  color: var(--a_primary);
 }
 .white {
   color: var(--white);
 }
+.btn-primary{
+  background-color: var(--a_secondary);
+  color: var(--white);
+}
 .ui-btn {
-  background-color: var(--green);
-  color: white;
+  border:1px solid var(--a_secondary);
+  color: var(--a_secondary);
 }
 .ui-btn:hover {
-  box-shadow: inset 0px 0px 5px var(--white);
   color: var(--white);
+  background-color: var(--a_secondary);
 }
 /*customized*/
