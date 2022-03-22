@@ -36,6 +36,9 @@ app.use("/cart", AddProduct);
 const order = require("./routes/Order");
 app.use("/order", order);
 
+const customizer = require("./routes/Customizer");
+app.use("/customizer", customizer);
+
 app.post("/payment", async (req, res) => {
   let status;
   try {

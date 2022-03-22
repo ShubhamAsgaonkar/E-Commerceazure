@@ -136,6 +136,7 @@ function Customizr() {
                 </p>
               </div>
             </div>
+            <button className=" btn ui-btn">Order </button>
           </form>
         </div>
       </div>
