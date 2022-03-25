@@ -25,6 +25,7 @@
     left: 10px;
     opacity:.6;
     transition: .5s ease-in-out;
+    cursor: text;
 }
 .cus-group .cus-form{
     padding:10px;

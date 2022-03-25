@@ -8,6 +8,7 @@ import WomenMenu from "./Submenu/Womenware";
 import Profile from "./Profile";
 import Cart from "./Cart";
 import DescProduct from "./Submenu/DescProduct";
+import DescProduct2 from "./Submenu/DescProduct2";
 import Order from "./Order";
 import Orderhistory from "./Orderhistory";
 import Customizr from "./Submenu/Customizr";
@@ -149,6 +150,10 @@ const Navbar = () => {
           <Route
             path="/descProduct/:id"
             component={() => <DescProduct setCartItem={getCartItem} />}
+          />
+          <Route
+            path="/descProduct2/:id"
+            component={() => <DescProduct2 setCartItem={getCartItem} />}
           />
           <Route
             path="/cart"

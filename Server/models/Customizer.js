@@ -16,6 +16,10 @@ module.exports = (sequelize,DataType) =>{
             type:DataType.STRING,
             allowNull:false,
         },
+        c_image:{
+            type:DataType.BLOB('long'),
+            allowNull:false,
+        }
     }
     ,{timestamps:false})
     return Customizer;

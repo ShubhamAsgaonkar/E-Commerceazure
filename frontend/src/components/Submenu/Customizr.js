@@ -1,10 +1,19 @@
 import React, { useState } from "react";
 import "../../style/customizer.css";
 import Info from "@material-ui/icons/Info";
+import Axios from "axios";
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
+
+toast.configure();
 
 function Customizr() {
   const [imagePreview, setImagePreview] = useState(null);
   const [err, setErr] = useState(false);
+  const [dname, setDname] = useState("");
+  const [dsize, setDsize] = useState("Small");
+  const [dtype, setDtype] = useState("Raymond");
+  const [dcolor, setDcolor] = useState("#000000");
 
   const handleChange = (e) => {
     const files = e.target.files[0];
@@ -20,6 +29,30 @@ function Customizr() {
       setErr(true);
     }
   };
+
+  const orderNow = (e) => {
+    e.preventDefault();
+    console.table({
+      name: dname,
+      size: dsize,
+      type: dtype,
+      color: dcolor,
+      image: imagePreview,
+    });
+    Axios.post("http://localhost:3002/customizer", {
+      c_name: dname,
+      c_size: dsize,
+      c_type: dtype,
+      c_color: dcolor,
+      c_image: imagePreview,
+    }).then(()=>{
+      toast.success("Customizer added to cart", { autoClose: 2000 });
+    }).catch((err)=>{
+      console.log(err);
+      toast.error("Error in adding customizer to cart", { autoClose: 2000 });
+    }) 
+  };
+
   return (
     <div className="container w-75 mt-2 p-2">
       <div className="row">
@@ -67,16 +100,28 @@ function Customizr() {
         <div class="col-md-6">
           <form>
             <div class="cus-group">
-              <input type="text" className="cus-form" id="Name" required/>
-              <label>Name of design</label>
+              <input
+                type="text"
+                className="cus-form"
+                id="Name"
+                onChange={(e) => {
+                  setDname(e.target.value);
+                }}
+                required
+              />
+              <label for="Name">Name of design</label>
             </div>
-            <div class="form-check form-check-inline">
+            <div class="form-check form-check-inline p-2">
               <input
                 class="form-check-input"
                 type="radio"
                 name="inlineRadioOptions"
                 id="inlineRadio1"
                 value="Small"
+                checked
+                onClick={(e) => {
+                  setDsize(e.target.value);
+                }}
               />
               <label class="form-check-label" for="inlineRadio1">
                 S
@@ -89,6 +134,9 @@ function Customizr() {
                 name="inlineRadioOptions"
                 id="inlineRadio2"
                 value="Medium"
+                onClick={(e) => {
+                  setDsize(e.target.value);
+                }}
               />
               <label class="form-check-label" for="inlineRadio2">
                 M
@@ -101,6 +149,9 @@ function Customizr() {
                 name="inlineRadioOptions"
                 id="inlineRadio3"
                 value="Large"
+                onClick={(e) => {
+                  setDsize(e.target.value);
+                }}
               />
               <label class="form-check-label" for="inlineRadio3">
                 L
@@ -113,30 +164,56 @@ function Customizr() {
                 name="inlineRadioOptions"
                 id="inlineRadio3"
                 value="Ex-Large"
+                onClick={(e) => {
+                  setDsize(e.target.value);
+                }}
               />
               <label class="form-check-label" for="inlineRadio3">
                 XL
               </label>
             </div>
-            <div class="cus-group-select">
-              <label for="">Clothes Type</label>
-              <select  name="" id="">
-                <option>Raymond</option>
-                <option>Manyavar</option>
-                <option>Polo England</option>
+            <div class="cus-group-select p-2">
+              <label for="type" className="mr-2">Clothes Type</label>
+              <select
+                name=""
+                id="type"
+                onChange={(e) => {
+                  setDtype(e.target.value);
+                }}
+              >
+                <option value="Raymond">Raymond</option>
+                <option value="Manyavar">Manyavar</option>
+                <option value="Polo-England">Polo England</option>
               </select>
             </div>
-            <div class="cus-group-radio">
-              <label for="color">Select Color</label>
-              <input type="color" id="color"/>
-              <div className="alert alert-info">
+            <div class="cus-group-radio p-2">
+              <label for="color" className="mr-2">Select Color</label>
+              <input
+                type="color"
+                id="color"
+                onChange={(e) => {
+                  setDcolor(e.target.value);
+                }}
+              />
+              <div className="alert alert-info mt-2">
                 <p>
-                  <span><Info/></span>
-                  The product color maybe slightly different from the selected color.
+                  <span>
+                    <Info />
+                  </span>
+                  The product color maybe slightly different from the selected
+                  color.
                 </p>
               </div>
             </div>
-            <button className=" btn ui-btn">Order </button>
+            <button
+              className="btn ui-btn m-2"
+              type="submit"
+              onClick={(e) => {
+                orderNow(e);
+              }}
+            >
+              Order{" "}
+            </button>
           </form>
         </div>
       </div>

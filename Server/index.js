@@ -39,6 +39,9 @@ app.use("/order", order);
 const customizer = require("./routes/Customizer");
 app.use("/customizer", customizer);
 
+const getWomenProduct = require("./routes/Product_W");
+app.use("/womenware", getWomenProduct);
+
 app.post("/payment", async (req, res) => {
   let status;
   try {
