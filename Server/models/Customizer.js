@@ -1,5 +1,14 @@
 module.exports = (sequelize,DataType) =>{
     const Customizer = sequelize.define("Customizer",{
+        Id: {
+            type: DataType.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
+        userId: {
+            type: DataType.INTEGER,
+            allowNull: false
+        },
         c_name:{
             type:DataType.STRING,
             allowNull:false,

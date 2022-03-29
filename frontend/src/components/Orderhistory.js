@@ -16,7 +16,7 @@ function Orderhistory() {
       style={{ height: "90vh" }}
     >
       {product.length === 0 ? (
-        <h1 class="display-4">NOthing puchased yet</h1>
+        <h1 class="display-4 text-center">Nothing purchased yet</h1>
       ) : (
         <div>
           {product.map((item) => {

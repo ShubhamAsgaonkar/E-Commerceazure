@@ -8,4 +8,13 @@ router.post("/",async (req,res)=>{
     res.json(post);
 })
 
+router.get("/:id",async (req,res)=>{
+    const id = req.params.id;
+    const prd = await Customizer.findAll({
+        where:{
+            userId:id
+        }
+    });
+    res.json(prd);
+});
 module.exports = router;

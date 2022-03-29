@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import "../../style/customizer.css";
 import Info from "@material-ui/icons/Info";
 import Axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
+import { UserContext } from "../Context";
+
 
 toast.configure();
 
@@ -14,6 +16,8 @@ function Customizr() {
   const [dsize, setDsize] = useState("Small");
   const [dtype, setDtype] = useState("Raymond");
   const [dcolor, setDcolor] = useState("#000000");
+  const { user, setUser } = useContext(UserContext);
+
 
   const handleChange = (e) => {
     const files = e.target.files[0];
@@ -32,14 +36,8 @@ function Customizr() {
 
   const orderNow = (e) => {
     e.preventDefault();
-    console.table({
-      name: dname,
-      size: dsize,
-      type: dtype,
-      color: dcolor,
-      image: imagePreview,
-    });
     Axios.post("http://localhost:3002/customizer", {
+      userId: user.Id,
       c_name: dname,
       c_size: dsize,
       c_type: dtype,

@@ -117,17 +117,13 @@ function DescProduct(props) {
               <button
                 className="btn ui-btn ml-2"
                 onClick={() => {
-                  if (
-                    product.psize == "" ||
-                    product.psize == null ||
-                    product.psize == undefined
-                  ) {
-                    toast.error("Please select size", { autoClose: 2000 });
-                  } else {
-                    addToCart(product);
+                  user.role === undefined
+                  ? history.push("/login")
+                  : psize === undefined || psize === "" || psize === null?
+                    toast.error("Please select size", { autoClose: 2000 }):
                     history.push(`/order/${user.Id}`);
                   }
-                }}
+                }
               >
                 Buy Now
               </button>
