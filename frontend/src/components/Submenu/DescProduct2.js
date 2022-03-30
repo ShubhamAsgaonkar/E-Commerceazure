@@ -118,9 +118,9 @@ function DescProduct2(props) {
                 className="btn ui-btn ml-2"
                 onClick={() => {
                   if (
-                    product.psize == "" ||
-                    product.psize == null ||
-                    product.psize == undefined
+                    psize == "" ||
+                    psize == null ||
+                    psize == undefined
                   ) {
                     toast.error("Please select size", { autoClose: 2000 });
                   } else {

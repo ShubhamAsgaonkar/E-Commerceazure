@@ -42,7 +42,7 @@ function Customizr() {
       c_size: dsize,
       c_type: dtype,
       c_color: dcolor,
-      c_image: imagePreview,
+      c_image:  new Buffer.from(imagePreview).toString("ascii"),
     }).then(()=>{
       toast.success("Customizer added to cart", { autoClose: 2000 });
     }).catch((err)=>{
@@ -102,6 +102,7 @@ function Customizr() {
                 type="text"
                 className="cus-form"
                 id="Name"
+                name="name"
                 onChange={(e) => {
                   setDname(e.target.value);
                 }}
@@ -173,7 +174,7 @@ function Customizr() {
             <div class="cus-group-select p-2">
               <label for="type" className="mr-2">Clothes Type</label>
               <select
-                name=""
+                name="type"
                 id="type"
                 onChange={(e) => {
                   setDtype(e.target.value);
@@ -189,6 +190,7 @@ function Customizr() {
               <input
                 type="color"
                 id="color"
+                name="color"
                 onChange={(e) => {
                   setDcolor(e.target.value);
                 }}

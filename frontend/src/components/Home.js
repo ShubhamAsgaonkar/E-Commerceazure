@@ -77,7 +77,7 @@ export default function Home() {
       </div>
 
       {/* display */}
-
+{/* 
       <div className="container-fluid p-4">
         <div className="container-fluid">
           <h1 className="bg-a_primary white p-2">Collection</h1>
@@ -96,7 +96,11 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
+
+      <footer className="bg-dark text-light p-1 d-flex justify-content-center">
+        <p className="p-1">Made by: Gulam Ahmad &copy;2022</p>
+      </footer>
     </div>
   );
 }
