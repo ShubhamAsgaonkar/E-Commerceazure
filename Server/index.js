@@ -7,8 +7,8 @@ const cors = require("cors");
 const razorpay = require("razorpay");
 
 const instance = new razorpay({
-  key_id: "rzp_test_n7mL4hR33brspJ",
-  key_secret: "Y7qkcOhMK1bO0vN5OidMk0FC",
+  key_id: razor_pay_key,
+  key_secret: +razor_pay_id,
 });
 
 //middleware
